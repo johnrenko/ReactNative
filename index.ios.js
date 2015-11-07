@@ -50,7 +50,7 @@ var reactNative = React.createClass({
             value={this.state.pw}
           />
         </View>
-        <TouchableHighlight style={styles.button} onPress={this._onPressButton} underlayColor={'green'}>
+        <TouchableHighlight style={styles.button} onPress={this._onPressButton} underlayColor={'#d3d3d3'}>
         <Text style={styles.buttonText}>
             Login
         </Text>
