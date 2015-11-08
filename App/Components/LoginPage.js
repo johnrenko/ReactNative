@@ -2,6 +2,7 @@ var React = require('react-native');
 var Parse = require('parse/react-native');
 var ParseReact = require('parse-react/react-native');
 var RegisterPage = require('./RegisterPage');
+var EmptyPage = require('./EmptyPage');
 
 var {
 	View,
@@ -19,25 +20,41 @@ var LoginPage = React.createClass({
     return {
       login: "",
       pw: "",
+      user: null
     };
   },
 
   _handleNavigationRequest: function() {
-    this.props.navigator.push({
-    	title: 'Register',
+	this.props.navigator.push({
+    	title: 'Registration Page',
     	component: RegisterPage
     });
   },
 
-  _loginAccount: function() {
-    Parse.User.logIn(this.state.login, this.state.pw, {
-	  success: function(user) {
+  _loginRedirect: function() {
+	this.props.navigator.push({
+    	title: 'Empty Page',
+    	component: EmptyPage
+    });
+  },
 
+  _loginAccount: function() {
+
+    Parse.User.logIn(this.state.login, this.state.pw, {
+	  success: function() {
+	  	console.log('success');
 	  },
 	  error: function(user, error) {
-
+	  	console.log(error);
 	  }
-	});
+	}),
+
+	Parse.User.currentAsync()._resolved ? 	
+	this.props.navigator.push({
+    	title: 'Empty Page',
+    	component: EmptyPage
+    })
+    : console.log('Not logged in');
   },
 
   render: function() {
@@ -96,7 +113,7 @@ var styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#d3d3d3',
-    padding: 16,
+    padding: 10,
   },
   buttonText: {
     textAlign: 'center',

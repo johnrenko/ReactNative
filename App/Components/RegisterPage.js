@@ -89,7 +89,7 @@ var styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#d3d3d3',
-    padding: 16,
+    padding: 10,
   },
   buttonText: {
     textAlign: 'center',
