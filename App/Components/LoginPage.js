@@ -1,4 +1,6 @@
 var React = require('react-native');
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 var RegisterPage = require('./RegisterPage');
 
 var {
@@ -27,6 +29,17 @@ var LoginPage = React.createClass({
     });
   },
 
+  _loginAccount: function() {
+    Parse.User.logIn(this.state.login, this.state.pw, {
+	  success: function(user) {
+
+	  },
+	  error: function(user, error) {
+
+	  }
+	});
+  },
+
   render: function() {
     return (
       <View style={styles.pageContainer}>
@@ -37,16 +50,19 @@ var LoginPage = React.createClass({
           <TextInput
             style={styles.input}
             onChangeText={(login) => this.setState({login})}
-            value={this.state.text} />
+            value={this.state.text} 
+            placeholder='johndoe@email.com'
+            keyboardType={'email-address'} />
           <Text style={styles.label}>
             Password
           </Text>
           <TextInput
             style={styles.input}
             onChangeText={(pw) => this.setState({pw})}
-            value={this.state.pw} />
+            value={this.state.pw}
+            placeholder='******' />
         </View>
-        <TouchableHighlight style={styles.button} onPress={this._onPressButton} underlayColor={'#d3d3d3'}>
+        <TouchableHighlight style={styles.button} onPress={this._loginAccount} underlayColor={'#d3d3d3'}>
         <Text style={styles.buttonText}>
             Login
         </Text>

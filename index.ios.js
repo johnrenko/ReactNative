@@ -5,7 +5,8 @@
 'use strict';
 
 var React = require('react-native');
-var Parse = require('parse').Parse;
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 var LoginPage = require('./App/Components/LoginPage');
 var RegisterPage = require('./App/Components/RegisterPage');
 
@@ -23,8 +24,6 @@ Parse.initialize(
   'gFl0ssOIuxTuizjG1AB786PTWioPcjdnHVDlyQNF',
   'vJKvQk3pnhfjMU3JyIzoPrV2G00JPm5Fe8cPHiUe'
 );
-
-
 
 var reactNative = React.createClass({
 

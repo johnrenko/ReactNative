@@ -1,4 +1,6 @@
 var React = require('react-native');
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 
 var {
 	View,
@@ -17,9 +19,26 @@ var RegisterPage = React.createClass({
       pw: "",
     };
   },
-  
+
   _handleBackButtonPress: function() {
     this.props.navigator.pop();
+  },
+
+  _createAccount: function() {
+    var user = new Parse.User();
+    user.set("username", this.state.login);
+    user.set("password", this.state.pw);
+    user.set("email", this.state.login);
+  
+    user.signUp(null, {
+      success: function(user) {
+        // Hooray! Let them use the app now.
+      },
+      error: function(user, error) {
+        // Show the error message somewhere and let the user try again.
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
   },
 
   render: function() {
@@ -41,7 +60,7 @@ var RegisterPage = React.createClass({
             onChangeText={(pw) => this.setState({pw})}
             value={this.state.pw} />
         </View>
-        <TouchableHighlight style={styles.button} onPress={this._onPressButton} underlayColor={'#d3d3d3'}>
+        <TouchableHighlight style={styles.button} onPress={this._createAccount} underlayColor={'#d3d3d3'}>
         <Text style={styles.buttonText}>
             Register
         </Text>
