@@ -15,12 +15,18 @@ var {
 } = React;
 
 var LoginPage = React.createClass({
+  mixins: [ParseReact.Mixin],
 
   getInitialState: function() {
     return {
       login: "",
       pw: "",
-      user: null
+    };
+  },
+
+  observe: function() {
+    return {
+      user: ParseReact.currentUser
     };
   },
 
@@ -39,22 +45,17 @@ var LoginPage = React.createClass({
   },
 
   _loginAccount: function() {
-
     Parse.User.logIn(this.state.login, this.state.pw, {
 	  success: function() {
 	  	console.log('success');
-	  },
+      this._loginRedirect();
+
+	  }.bind(this),
 	  error: function(user, error) {
 	  	console.log(error);
 	  }
-	}),
+	});
 
-	Parse.User.currentAsync()._resolved ? 	
-	this.props.navigator.push({
-    	title: 'Empty Page',
-    	component: EmptyPage
-    })
-    : console.log('Not logged in');
   },
 
   render: function() {
