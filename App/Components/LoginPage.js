@@ -40,7 +40,9 @@ var LoginPage = React.createClass({
   _loginRedirect: function() {
 	this.props.navigator.push({
     	title: 'Empty Page',
-    	component: EmptyPage
+    	component: EmptyPage,
+      rightButtonTitle: 'Log Out',
+      leftButtonTitle: ' '
     });
   },
 
@@ -49,7 +51,6 @@ var LoginPage = React.createClass({
 	  success: function() {
 	  	console.log('success');
       this._loginRedirect();
-
 	  }.bind(this),
 	  error: function(user, error) {
 	  	console.log(error);

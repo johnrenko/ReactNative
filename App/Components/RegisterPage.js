@@ -1,6 +1,7 @@
 var React = require('react-native');
 var Parse = require('parse/react-native');
 var ParseReact = require('parse-react/react-native');
+var EmptyPage = require('./EmptyPage');
 
 var {
 	View,
@@ -24,6 +25,15 @@ var RegisterPage = React.createClass({
     this.props.navigator.pop();
   },
 
+  _loginRedirect: function() {
+    this.props.navigator.push({
+      title: 'Empty Page',
+      component: EmptyPage,
+      rightButtonTitle: 'Log Out',
+      leftButtonTitle: ' '
+    });
+  },
+
   _createAccount: function() {
     var user = new Parse.User();
     user.set("username", this.state.login);
@@ -33,10 +43,11 @@ var RegisterPage = React.createClass({
     user.signUp(null, {
       success: function(user) {
         // Hooray! Let them use the app now.
-      },
+        this._loginRedirect();
+      }.bind(this),
       error: function(user, error) {
         // Show the error message somewhere and let the user try again.
-        alert("Error: " + error.code + " " + error.message);
+        alert(" " + error.message);
       }
     });
   },
