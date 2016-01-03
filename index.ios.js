@@ -9,6 +9,7 @@ var Parse = require('parse/react-native');
 var ParseReact = require('parse-react/react-native');
 var LoginPage = require('./App/Components/LoginPage');
 var RegisterPage = require('./App/Components/RegisterPage');
+var NewExhibition = require('./App/Components/NewExhibition');
 
 var {
   AppRegistry,

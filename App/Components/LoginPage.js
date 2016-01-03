@@ -2,7 +2,7 @@ var React = require('react-native');
 var Parse = require('parse/react-native');
 var ParseReact = require('parse-react/react-native');
 var RegisterPage = require('./RegisterPage');
-var EmptyPage = require('./EmptyPage');
+var Expos = require('./Expos');
 
 var {
 	View,
@@ -39,9 +39,12 @@ var LoginPage = React.createClass({
 
   _loginRedirect: function() {
 	this.props.navigator.push({
-    	title: 'Empty Page',
-    	component: EmptyPage,
+    	title: 'Expos',
+    	component: Expos,
       rightButtonTitle: 'Log Out',
+      onRightButtonPress: () => { 
+        Parse.User.logOut();
+        this.props.navigator.popToTop(); },
       leftButtonTitle: ' '
     });
   },
@@ -53,7 +56,7 @@ var LoginPage = React.createClass({
       this._loginRedirect();
 	  }.bind(this),
 	  error: function(user, error) {
-	  	console.log(error);
+        alert(" " + error.message);
 	  }
 	});
 
@@ -100,7 +103,7 @@ var styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
     padding: 20,
     paddingBottom: 0
   },
