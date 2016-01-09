@@ -17,7 +17,9 @@ var Card = React.createClass({
     return (
 
       <View style={styles.cardContainer}>
-        <Image source={{uri: this.props.image}} style={styles.cardImage} />
+        <View style={styles.imageBorder}>
+          <Image source={{uri: this.props.image}} style={styles.cardImage} />
+        </View>
         <Text style={styles.cardTitle}>
           {this.props.title}
         </Text>
@@ -31,7 +33,7 @@ var styles = StyleSheet.create({
   cardContainer: {
     alignItems: 'stretch',
     backgroundColor: '#FFF',
-    borderWidth: 1,
+    borderWidth: .5,
     borderRadius: 4,
     borderColor: '#d3d3d3',
     shadowColor: "rgba(0,0,0,.12)",
@@ -48,11 +50,17 @@ var styles = StyleSheet.create({
     margin: 20,
     fontWeight: 'bold'
   },
+  imageBorder: {
+    borderTopRightRadius: 4,
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    overflow: 'hidden',
+  },
   cardImage: {
     alignItems: 'stretch',
     height : 150,
     resizeMode: 'cover',
-    borderRadius: 4,
   }
 });
 
