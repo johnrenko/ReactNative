@@ -3,6 +3,7 @@
 
 var React = require('react-native');
 var NewExhibition = require('./NewExhibition');
+var Card = require('./Card');
 
 var {
   StyleSheet,
@@ -23,11 +24,10 @@ var Expos = React.createClass({
 	render: function() {
 	  return (
 	    <View style={styles.pageContainer}>
-	      <TouchableHighlight style={styles.button} onPress={this._createExpo} underlayColor={'#d3d3d3'}>
-	      <Text style={styles.buttonText}>
-	          New exhibition
-	      </Text>
-	      </TouchableHighlight>
+        <View style={styles.cardContainer}>
+          <Card title="Exhibition" image="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg"/>
+          <Card title="Exhibition2" image="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg"/>
+        </View>
 	    </View>
 	  );
   }
@@ -37,13 +37,20 @@ var Expos = React.createClass({
 var styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#FFF',
+    justifyContent: 'flex-start',
+    backgroundColor: '#F5f5f5',
+    paddingTop: 80,
     padding: 20,
     paddingBottom: 0
   },
+  cardsContainer: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+    backgroundColor: '#F5f5f5',
+  },
   button: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FFF',
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#d3d3d3',

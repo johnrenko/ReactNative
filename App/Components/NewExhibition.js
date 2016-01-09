@@ -28,12 +28,12 @@ var styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     marginTop: 100,
-    backgroundColor: '#FFF',
+    backgroundColor: '#f5f5f5',
     padding: 20,
     paddingBottom: 0
   },
   button: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#fff',
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#d3d3d3',

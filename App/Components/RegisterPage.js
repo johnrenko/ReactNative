@@ -88,7 +88,7 @@ var styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#f5f5f5',
     padding: 20,
     paddingBottom: 0
   },
@@ -99,7 +99,7 @@ var styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   button: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#fff',
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#d3d3d3',
