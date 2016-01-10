@@ -27,6 +27,11 @@ var Expos = React.createClass({
         <View style={styles.cardContainer}>
           <Card title="Exhibition" image="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg"/>
           <Card title="Exhibition2" image="http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg"/>
+          <TouchableHighlight style={styles.button} onPress={this._createExpo} underlayColor={'#d3d3d3'}>
+            <Text style={styles.buttonText}>
+                New exhibition
+            </Text>
+          </TouchableHighlight>
         </View>
 	    </View>
 	  );
